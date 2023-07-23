@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import Product from "./components/product/Product";
 
-class App extends Component {
+/*class App extends Component {
   state = {
     products: [
       { title: "js", price: "99" },
@@ -29,7 +29,7 @@ class App extends Component {
       </div>
     );
   }
-}
+}*/
 
 /*const App = () => {
   return (
@@ -51,5 +51,31 @@ class App extends Component {
       "this is my first app"
     );
   };*/
+
+const App = () => {
+  const [products, setProducts] = useState([
+    { title: "js", price: "99" },
+    { title: "css", price: "89" },
+    { title: "html", price: "79" },
+  ]);
+
+  const clickHandler = () => {
+    setProducts([
+        { title: "js", price: "69" },
+        { title: "css", price: "59" },
+        { title: "html", price: "49" },
+      ]);
+  }
+
+  return (
+    <div className="container">
+      <h1>HELlllo</h1>
+      {products.map((product) => (
+        <Product name={product.title} price={product.price} />
+      ))}
+      <button onClick={clickHandler}>click me</button>
+    </div>
+  );
+};
 
 export default App;
