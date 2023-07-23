@@ -10,11 +10,22 @@ class App extends Component {
     ],
   };
 
+  clickHandler = () => {
+    this.setState({products: [
+        { title: "js", price: "69" },
+        { title: "css", price: "59" },
+        { title: "html", price: "49" },
+      ]});
+  }
+
   render() {
     return (
       <div className="container">
         <h1>HELlllo</h1>
-        {this.state.products.map(product => <Product name = {product.title} price = {product.price} />)}
+        {this.state.products.map((product) => (
+          <Product name={product.title} price={product.price} />
+        ))}
+        <button onClick={this.clickHandler}>click me</button>
       </div>
     );
   }
