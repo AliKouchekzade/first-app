@@ -4,7 +4,11 @@ const App = () => {
   return (
     <div className="container">
       <h1>HELlllo</h1>
-      <Product />
+      <Product name="js" price="10" />
+      <Product name="htm" price="20">
+        <p>discount is 15%</p>
+      </Product>
+      <Product name="css" price="30" />
     </div>
   );
 };
