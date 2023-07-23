@@ -2,15 +2,19 @@ import React, { Component } from "react";
 import Product from "./components/product/Product";
 
 class App extends Component {
+  state = {
+    products: [
+      { title: "js", price: "99" },
+      { title: "css", price: "89" },
+      { title: "html", price: "79" },
+    ],
+  };
+
   render() {
     return (
       <div className="container">
         <h1>HELlllo</h1>
-        <Product name="js" price="10" />
-        <Product name="htm" price="20">
-          <p>discount is 15%</p>
-        </Product>
-        <Product name="css" price="30" />
+        {this.state.products.map(product => <Product name = {product.title} price = {product.price} />)}
       </div>
     );
   }
