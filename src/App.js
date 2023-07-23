@@ -4,6 +4,7 @@ import HooksCounter from "./components/Counter/hookscounter";
 import ClassCounter from "./components/Counter/classCounter";
 import HooksObject from "./components/objectchange/hookobject";
 import ClassObject from "./components/objectchange/classobject";
+import HookArray from "./components/array/hookarray";
 
 /*class App extends Component {
   state = {
@@ -87,7 +88,8 @@ const App = () => {
         //<HooksCounter />);
         //<ClassCounter />
         //<HooksObject />
-        <ClassObject />
+        //<ClassObject />
+        <HookArray />
     );
 }
 
