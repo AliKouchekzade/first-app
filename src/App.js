@@ -1,5 +1,7 @@
 import React, { Component, useState } from "react";
 import Product from "./components/product/Product";
+import HooksCounter from "./components/Counter/hookscounter";
+import ClassCounter from "./components/Counter/classCounter";
 
 /*class App extends Component {
   state = {
@@ -52,7 +54,7 @@ import Product from "./components/product/Product";
     );
   };*/
 
-const App = () => {
+/*const App = () => {
   const [products, setProducts] = useState([
     { title: "js", price: "99" },
     { title: "css", price: "89" },
@@ -76,6 +78,13 @@ const App = () => {
       <button onClick={clickHandler}>click me</button>
     </div>
   );
-};
+};*/
+
+const App = () => {
+    return (
+        //<HooksCounter />);
+        <ClassCounter />
+    );
+}
 
 export default App;
