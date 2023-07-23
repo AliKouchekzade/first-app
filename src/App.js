@@ -1,10 +1,10 @@
-import React from "react";
+import Product from "./components/product/Product";
 
 const App = () => {
   return (
     <div className="container">
       <h1>HELlllo</h1>
-      <p>this is paragraph</p>
+      <Product />
     </div>
   );
 };
