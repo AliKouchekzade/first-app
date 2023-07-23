@@ -5,8 +5,9 @@ import ClassCounter from "./components/Counter/classCounter";
 import HooksObject from "./components/objectchange/hookobject";
 import ClassObject from "./components/objectchange/classobject";
 import HookArray from "./components/array/hookarray";
+import './App.css';
 
-/*class App extends Component {
+class App extends Component {
   state = {
     products: [
       { title: "js", price: "99" },
@@ -16,11 +17,16 @@ import HookArray from "./components/array/hookarray";
   };
 
   clickHandler = () => {
-    this.setState({products: [
+   // const copy = {...this.state};
+   // copy.products.map(element => element.price -=10);
+    //this.setState(copy);
+    this.setState({...this.state.products.map(element => element.price -=10)});
+    //console.log(khar);
+    /*this.setState({products: [
         { title: "js", price: "69" },
         { title: "css", price: "59" },
         { title: "html", price: "49" },
-      ]});
+      ]});*/
   }
 
   render() {
@@ -34,7 +40,7 @@ import HookArray from "./components/array/hookarray";
       </div>
     );
   }
-}*/
+}
 
 /*const App = () => {
   return (
@@ -83,7 +89,7 @@ import HookArray from "./components/array/hookarray";
   );
 };*/
 
-const App = () => {
+/*const App = () => {
     return (
         //<HooksCounter />);
         //<ClassCounter />
@@ -91,6 +97,6 @@ const App = () => {
         //<ClassObject />
         <HookArray />
     );
-}
+}*/
 
 export default App;

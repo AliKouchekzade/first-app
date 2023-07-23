@@ -1,6 +1,8 @@
+import style from './Product.module.css';
+
 const Product = (props) => {
   return (
-    <div>
+    <div className={style.product}>
       <p>product : {props.name}</p>
       <p>price : {props.price}</p>
       {props.children}
