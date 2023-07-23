@@ -2,6 +2,8 @@ import React, { Component, useState } from "react";
 import Product from "./components/product/Product";
 import HooksCounter from "./components/Counter/hookscounter";
 import ClassCounter from "./components/Counter/classCounter";
+import HooksObject from "./components/objectchange/hookobject";
+import ClassObject from "./components/objectchange/classobject";
 
 /*class App extends Component {
   state = {
@@ -83,7 +85,9 @@ import ClassCounter from "./components/Counter/classCounter";
 const App = () => {
     return (
         //<HooksCounter />);
-        <ClassCounter />
+        //<ClassCounter />
+        //<HooksObject />
+        <ClassObject />
     );
 }
 
