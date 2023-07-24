@@ -1,43 +1,40 @@
 import React, { Component, useState } from "react";
-import Product from "./components/product/Product";
-import HooksCounter from "./components/Counter/hookscounter";
-import ClassCounter from "./components/Counter/classCounter";
-import HooksObject from "./components/objectchange/hookobject";
-import ClassObject from "./components/objectchange/classobject";
-import HookArray from "./components/array/hookarray";
-import './App.css';
+//import Product from "./components/product/Product";
+//import ClassCounter from "./components/Counter/classCounter";
+//import HooksObject from "./components/objectchange/hookobject";
+//import HooksCounter from "./components/Counter/hookscounter";
+//import ClassObject from "./components/objectchange/classobject";
+//import HookArray from "./components/array/hookarray";
+import ProductList from "./components/productList/productList";
+import styles from "./App.module.css";
 
 class App extends Component {
   state = {
-    products: [
-      { title: "js", price: "99" },
-      { title: "css", price: "89" },
-      { title: "html", price: "79" },
-    ],
+    count: 0,
   };
 
   clickHandler = () => {
-   // const copy = {...this.state};
-   // copy.products.map(element => element.price -=10);
+    // const copy = {...this.state};
+    // copy.products.map(element => element.price -=10);
     //this.setState(copy);
-    this.setState({...this.state.products.map(element => element.price -=10)});
+    //this.setState({...this.state.products.map(element => element.price -=10)});
+    this.setState((preState) => {
+      return { count: preState.count + 1 };
+    });
+    console.log(this.state);
     //console.log(khar);
     /*this.setState({products: [
         { title: "js", price: "69" },
         { title: "css", price: "59" },
         { title: "html", price: "49" },
       ]});*/
-  }
+  };
 
   render() {
     return (
-      <div className="container">
-        <h1>HELlllo</h1>
-        {this.state.products.map((product) => (
-          <Product name={product.title} price={product.price} />
-        ))}
-        <button onClick={this.clickHandler}>click me</button>
-      </div>
+      <>
+        <ProductList />
+      </>
     );
   }
 }

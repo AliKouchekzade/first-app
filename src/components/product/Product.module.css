@@ -2,4 +2,36 @@
     padding: 15px;
     border: 1px solid black;
     border-radius: 10px;
+    width: 800px;
+    height: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 20px;
+}
+
+.product > button {
+    background: #fff;
+    border: 0;
+    padding: 10px 20px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #4338ca;
+    border: 1px solid #4338ca;
+    font-size: 16px;
+}
+
+.product :nth-child(4) {
+    background: #a5b4fc;
+}
+
+span {
+    height: 25px;
+    width: 25px;
+    color: #4338ca;
+    background: #a5b4fc;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
