@@ -2,7 +2,7 @@
     padding: 15px;
     border: 1px solid black;
     border-radius: 10px;
-    width: 800px;
+    width: 1000px;
     height: 100px;
     display: flex;
     justify-content: space-evenly;
@@ -21,8 +21,22 @@
     font-size: 16px;
 }
 
-.product :nth-child(4) {
+.product :nth-child(5) {
     background: #a5b4fc;
+}
+
+.product > input {
+    height: 30px;
+    font-size: 16px;
+    color: #444;
+    outline: none;
+    border: 1px solid #4338ca;
+    border-radius: 7px;
+    padding: 2px 4px;
+}
+
+.product > input:focus {
+    border-width: 2px;
 }
 
 span {
@@ -34,4 +48,9 @@ span {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.product .remove { 
+    color: red;
+    border-color: red;
 }

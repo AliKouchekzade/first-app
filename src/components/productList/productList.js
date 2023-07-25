@@ -26,7 +26,24 @@ class ProductList extends Component {
     this.setState({products : copy})
   };
 
+  decreseHandler = (id) => {
+    const copy = [...this.state.products];
+    const selected = copy.find(obj => obj.id === id);
+    if (selected.quantity > 1) {selected.quantity--;this.setState({products : copy})}
+    else this.deleteHandler(id);
+  }
+
+  setTextHandler = (event,id) => {
+    const copy = [...this.state.products];
+    copy.forEach((obj,index) => {if (obj.id === id) copy[index].title = event.target.value;});
+    this.setState({products : copy})
+  };
+
   render() {
+
+    if (!this.state.products.length)
+      return <div className={styles.productList}>there is nothing here</div>
+
     return (
       <div className={styles.productList}>
         {this.state.products.map((product, index) => (
@@ -34,6 +51,8 @@ class ProductList extends Component {
             product = {product}
             delete = {() => this.deleteHandler(product.id)}
             increase = {() => this.increaseHandler(product.id)}
+            decrease = {() => this.decreseHandler(product.id)}
+            onSetText = {(event) => this.setTextHandler (event,product.id)}
             key = {index}
           />
         ))}
