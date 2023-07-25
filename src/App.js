@@ -1,99 +1,66 @@
-import React, { Component, useState } from "react";
-//import Product from "./components/product/Product";
-//import ClassCounter from "./components/Counter/classCounter";
-//import HooksObject from "./components/objectchange/hookobject";
-//import HooksCounter from "./components/Counter/hookscounter";
-//import ClassObject from "./components/objectchange/classobject";
-//import HookArray from "./components/array/hookarray";
+import React, { Component } from "react";
 import ProductList from "./components/productList/productList";
-import styles from "./App.module.css";
+import NavBar from "./components/navBar/NavBar";
 
 class App extends Component {
   state = {
-    count: 0,
+    products: [
+      { title: "js", price: "99", id: 1, quantity: 1 },
+      { title: "css", price: "89", id: 2, quantity: 1 },
+      { title: "html", price: "79", id: 3, quantity: 1 },
+      { title: "next", price: "109", id: 4, quantity: 1 },
+    ],
   };
 
-  clickHandler = () => {
-    // const copy = {...this.state};
-    // copy.products.map(element => element.price -=10);
-    //this.setState(copy);
-    //this.setState({...this.state.products.map(element => element.price -=10)});
-    this.setState((preState) => {
-      return { count: preState.count + 1 };
-    });
+  deleteHandler = (id) => {
+    const deletedProduct = this.state.products.filter((obj) => obj.id !== id);
+    this.setState({ products: deletedProduct });
+  };
+
+  increaseHandler = (id) => {
+    let index = this.state.products.findIndex((obj) => obj.id === id);
+    const product = { ...this.state.products[index] };
+    const products = [...this.state.products];
+    product.quantity++;
+    products[index] = product;
+    this.setState({ products });
+  };
+
+  decreseHandler = (id) => {
+    let index = this.state.products.findIndex((obj) => obj.id === id);
+    const product = { ...this.state.products[index] };
+    const products = [...this.state.products];
+    if (product.quantity > 1) {
+      product.quantity--;
+      products[index] = product;
+      this.setState({ products });
+    } else this.deleteHandler(id);
+  };
+
+  setTextHandler = (event, id) => {
+    let index = this.state.products.findIndex((obj) => obj.id === id);
+    const product = { ...this.state.products[index] };
+    const products = [...this.state.products];
+    product.title = event.target.value;
+    products[index] = product;
     console.log(this.state);
-    //console.log(khar);
-    /*this.setState({products: [
-        { title: "js", price: "69" },
-        { title: "css", price: "59" },
-        { title: "html", price: "49" },
-      ]});*/
+    this.setState({ products });
   };
 
   render() {
     return (
       <>
-        <ProductList />
+        <NavBar shop={this.state.products.length} />
+        <ProductList
+          products={this.state.products}
+          deletee={this.deleteHandler}
+          increase={this.increaseHandler}
+          decrease={this.decreseHandler}
+          onSetText={this.setTextHandler}
+        />
       </>
     );
   }
 }
-
-/*const App = () => {
-  return (
-    <div className="container">
-      <h1>HELlllo</h1>
-      <Product name="js" price="10" />
-      <Product name="htm" price="20">
-        <p>discount is 15%</p>
-      </Product>
-      <Product name="css" price="30" />
-    </div>
-  );
-};*/
-
-/*const App = () => {
-    return React.createElement(
-      "div",
-      { id: "title", className: "app-title" },
-      "this is my first app"
-    );
-  };*/
-
-/*const App = () => {
-  const [products, setProducts] = useState([
-    { title: "js", price: "99" },
-    { title: "css", price: "89" },
-    { title: "html", price: "79" },
-  ]);
-
-  const clickHandler = () => {
-    setProducts([
-        { title: "js", price: "69" },
-        { title: "css", price: "59" },
-        { title: "html", price: "49" },
-      ]);
-  }
-
-  return (
-    <div className="container">
-      <h1>HELlllo</h1>
-      {products.map((product) => (
-        <Product name={product.title} price={product.price} />
-      ))}
-      <button onClick={clickHandler}>click me</button>
-    </div>
-  );
-};*/
-
-/*const App = () => {
-    return (
-        //<HooksCounter />);
-        //<ClassCounter />
-        //<HooksObject />
-        //<ClassObject />
-        <HookArray />
-    );
-}*/
 
 export default App;
