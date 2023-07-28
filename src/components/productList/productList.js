@@ -1,11 +1,7 @@
 import Product from "../product/Product";
-import React, { Component } from "react";
 import styles from "./productList.module.css";
 
-class ProductList extends Component {
-
-  render() {
-    const {deletee,increase,decrease,onSetText,products} = this.props;
+const ProductList = ({deletee,increase,decrease,onSetText,products}) => {
 
     if (!products.length)
       return <div className={styles.productList}>there is nothing here</div>;
@@ -24,7 +20,6 @@ class ProductList extends Component {
         ))}
       </div>
     );
-  }
 }
 
 export default ProductList;

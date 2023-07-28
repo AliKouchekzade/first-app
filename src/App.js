@@ -1,66 +1,62 @@
-import React, { Component } from "react";
+import React, {useState} from "react";
 import ProductList from "./components/productList/productList";
 import NavBar from "./components/navBar/NavBar";
 
-class App extends Component {
-  state = {
-    products: [
-      { title: "js", price: "99", id: 1, quantity: 1 },
-      { title: "css", price: "89", id: 2, quantity: 1 },
-      { title: "html", price: "79", id: 3, quantity: 1 },
-      { title: "next", price: "109", id: 4, quantity: 1 },
-    ],
+const App = () => {
+  const [products,setProducts] = useState([
+    { title: "js", price: "99", id: 1, quantity: 1 },
+    { title: "css", price: "89", id: 2, quantity: 1 },
+    { title: "html", price: "79", id: 3, quantity: 1 },
+    { title: "next", price: "109", id: 4, quantity: 1 },
+  ]);
+
+  const deleteHandler = (id) => {
+    const deletedProduct = products.filter((obj) => obj.id !== id);
+    setProducts({ products: deletedProduct });
   };
 
-  deleteHandler = (id) => {
-    const deletedProduct = this.state.products.filter((obj) => obj.id !== id);
-    this.setState({ products: deletedProduct });
-  };
-
-  increaseHandler = (id) => {
-    let index = this.state.products.findIndex((obj) => obj.id === id);
-    const product = { ...this.state.products[index] };
-    const products = [...this.state.products];
+  const increaseHandler = (id) => {
+    let index = products.findIndex((obj) => obj.id === id);
+    const product = { ...products[index] };
+    const updateProducts = [...products];
     product.quantity++;
-    products[index] = product;
-    this.setState({ products });
+    updateProducts[index] = product;
+    setProducts(updateProducts);
   };
 
-  decreseHandler = (id) => {
-    let index = this.state.products.findIndex((obj) => obj.id === id);
-    const product = { ...this.state.products[index] };
-    const products = [...this.state.products];
+  const decreseHandler = (id) => {
+    let index = products.findIndex((obj) => obj.id === id);
+    const product = { ...products[index] };
+    const updateProducts = [...products];
     if (product.quantity > 1) {
       product.quantity--;
-      products[index] = product;
-      this.setState({ products });
-    } else this.deleteHandler(id);
+      updateProducts[index] = product;
+      setProducts(updateProducts);
+    } else deleteHandler(id);
   };
 
-  setTextHandler = (event, id) => {
-    let index = this.state.products.findIndex((obj) => obj.id === id);
-    const product = { ...this.state.products[index] };
-    const products = [...this.state.products];
+  const setTextHandler = (event, id) => {
+    let index = products.findIndex((obj) => obj.id === id);
+    const product = { ...products[index] };
+    const updateProducts = [...products];
     product.title = event.target.value;
-    products[index] = product;
-    console.log(this.state);
-    this.setState({ products });
+    updateProducts[index] = product;
+    setProducts(updateProducts);
   };
 
-  render() {
+  
     return (
       <>
-        <NavBar shop={this.state.products.length} />
+        <NavBar shop={products.length} />
         <ProductList
-          products={this.state.products}
-          deletee={this.deleteHandler}
-          increase={this.increaseHandler}
-          decrease={this.decreseHandler}
-          onSetText={this.setTextHandler}
+          products={products}
+          deletee={deleteHandler}
+          increase={increaseHandler}
+          decrease={decreseHandler}
+          onSetText={setTextHandler}
         />
       </>
     );
-  }
 }
 
 export default App;
