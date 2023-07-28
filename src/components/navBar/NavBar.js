@@ -1,6 +1,7 @@
+import { memo } from "react";
 import styles from "./navbar.module.css";
 
-const NavBar = ({shop}) => {
+const NavBar = ({ shop }) => {
   return (
     <div className={styles.navBar}>
       <a href="#">Home</a>
@@ -12,4 +13,4 @@ const NavBar = ({shop}) => {
   );
 };
 
-export default NavBar;
+export default memo(NavBar); //only renders when it needs

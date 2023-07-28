@@ -1,18 +1,30 @@
-import React, {useState} from "react";
+import React, { useEffect, useState } from "react";
 import ProductList from "./components/productList/productList";
 import NavBar from "./components/navBar/NavBar";
 
 const App = () => {
-  const [products,setProducts] = useState([
+  const [products, setProducts] = useState([
     { title: "js", price: "99", id: 1, quantity: 1 },
     { title: "css", price: "89", id: 2, quantity: 1 },
     { title: "html", price: "79", id: 3, quantity: 1 },
     { title: "next", price: "109", id: 4, quantity: 1 },
   ]);
 
+  useEffect(() => {
+    console.log("component did mount");
+  }, []);
+
+  useEffect(() => {
+    console.log("component did update");
+  }, [products]);
+
+  useEffect(() => {
+    return () => console.log("component unmount");
+  }, []);
+
   const deleteHandler = (id) => {
     const deletedProduct = products.filter((obj) => obj.id !== id);
-    setProducts({ products: deletedProduct });
+    setProducts(deletedProduct);
   };
 
   const increaseHandler = (id) => {
@@ -44,19 +56,18 @@ const App = () => {
     setProducts(updateProducts);
   };
 
-  
-    return (
-      <>
-        <NavBar shop={products.length} />
-        <ProductList
-          products={products}
-          deletee={deleteHandler}
-          increase={increaseHandler}
-          decrease={decreseHandler}
-          onSetText={setTextHandler}
-        />
-      </>
-    );
-}
+  return (
+    <>
+      <NavBar shop={products.length} />
+      <ProductList
+        products={products}
+        deletee={deleteHandler}
+        increase={increaseHandler}
+        decrease={decreseHandler}
+        onSetText={setTextHandler}
+      />
+    </>
+  );
+};
 
 export default App;
