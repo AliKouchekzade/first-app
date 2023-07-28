@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState , useRef} from "react";
 import ProductList from "./components/productList/productList";
 import NavBar from "./components/navBar/NavBar";
 
@@ -10,12 +10,16 @@ const App = () => {
     { title: "next", price: "109", id: 4, quantity: 1 },
   ]);
 
+  const preState = useRef(products);
+
   useEffect(() => {
     console.log("component did mount");
   }, []);
 
   useEffect(() => {
     console.log("component did update");
+    preState.current = [...products];
+    console.log(preState);
   }, [products]);
 
   useEffect(() => {
@@ -61,6 +65,7 @@ const App = () => {
       <NavBar shop={products.length} />
       <ProductList
         products={products}
+        preState = {preState.current}
         deletee={deleteHandler}
         increase={increaseHandler}
         decrease={decreseHandler}

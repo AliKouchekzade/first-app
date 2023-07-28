@@ -1,7 +1,8 @@
 import Product from "../product/Product";
 import styles from "./productList.module.css";
 
-const ProductList = ({ deletee, increase, decrease, onSetText, products }) => {
+const ProductList = ({ deletee, increase, decrease, onSetText, products,preState }) => {
+
   if (!products.length)
     return <div className={styles.productList}>there is nothing here</div>;
 
@@ -10,6 +11,7 @@ const ProductList = ({ deletee, increase, decrease, onSetText, products }) => {
       {products.map((product, index) => (
         <Product
           product={product}
+          preState = {preState[index]}
           onDelete={() => deletee(product.id)}
           increase={() => increase(product.id)}
           decrease={() => decrease(product.id)}
