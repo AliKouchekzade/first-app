@@ -2,7 +2,7 @@ import style from "./Product.module.css";
 import { FaTrashCan } from "react-icons/fa6";
 import { useRef, useEffect } from "react";
 
-const Product = ({ product, onSetText, increase, decrease, onDelete , preState }) => {
+const Product = ({ product, onSetText, increase, decrease, onDelete , preTitle }) => {
   const inputRef = useRef();
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const Product = ({ product, onSetText, increase, decrease, onDelete , preState }
 
   return (
     <div className={style.product}>
-      <p>product : {product.title} + {preState.title}</p>
+      <p>product : {product.title} + {preTitle}</p>
       <p>price : {product.price} $</p>
       <span>{product.quantity} </span>
       <input ref={inputRef} type="text" value={product.title} onChange={onSetText}></input>
