@@ -23,4 +23,43 @@ const ProductsProvider = ({ children }) => {
 export default ProductsProvider;
 
 export const useProducts = () => useContext(productsContext);
-export const useProductsAction = () => useContext(productsContextDispatcher);
+export const useProductsAction = () => {
+  const setProducts = useContext(productsContextDispatcher);
+  const products = useProducts();
+
+  const deleteHandler = (id) => {
+    const deletedProduct = products.filter((obj) => obj.id !== id);
+    setProducts(deletedProduct);
+  };
+
+  const increaseHandler = (id) => {
+    let index = products.findIndex((obj) => obj.id === id);
+    const product = { ...products[index] };
+    const updateProducts = [...products];
+    product.quantity++;
+    updateProducts[index] = product;
+    setProducts(updateProducts);
+  };
+
+  const decreseHandler = (id) => {
+    let index = products.findIndex((obj) => obj.id === id);
+    const product = { ...products[index] };
+    const updateProducts = [...products];
+    if (product.quantity > 1) {
+      product.quantity--;
+      updateProducts[index] = product;
+      setProducts(updateProducts);
+    } else deleteHandler(id);
+  };
+
+  const setTextHandler = (event, id) => {
+    let index = products.findIndex((obj) => obj.id === id);
+    const product = { ...products[index] };
+    const updateProducts = [...products];
+    product.title = event.target.value;
+    updateProducts[index] = product;
+    setProducts(updateProducts);
+  };
+
+  return { deleteHandler, increaseHandler, decreseHandler, setTextHandler };
+};
