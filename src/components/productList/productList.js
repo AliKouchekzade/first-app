@@ -29,7 +29,6 @@ const ProductList = () => {
       {products.map((product, index) => (
         <Product
           product={product}
-          preTitle={preState.current.find((obj) => obj.id === product.id).title}
           key={index}
         />
       ))}
