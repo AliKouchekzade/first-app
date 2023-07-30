@@ -1,0 +1,25 @@
+.searchBar {
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.searchBar > input {
+    height: 35px;
+    width: 300px;
+    padding: 5px 22px;
+    border: 1px solid #4338ca;
+    border-radius: 7px;
+    outline: none;
+    font-size: 16px;
+}
+
+.searchBar > input:focus {
+    border-width: 2px;
+}
+
+.searchBar > svg {
+    position: relative;
+    left: 20px;
+}

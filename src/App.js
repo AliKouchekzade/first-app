@@ -3,6 +3,7 @@ import NavBar from "./components/navBar/NavBar";
 import ProductsProvider from "./components/providers/productsProvider";
 import Filter from "./components/filter/filter";
 
+
 const App = () => {
   return (
     <ProductsProvider>

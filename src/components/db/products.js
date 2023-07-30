@@ -5,7 +5,7 @@ export const productsData = [
     title: "sphynx Tie Dye Grey Tshirt",
     quantity: 1,
     description: "sphynx Tie Dye Grey",
-    availableSizes: ["","X", "L", "XL", "XXl"],
+    availableSizes: ["","X", "L", "XL", "XXL"],
     price: 10,
     isFreeShipping: true,
   },

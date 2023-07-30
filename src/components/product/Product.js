@@ -9,7 +9,7 @@ const Product = ({ product }) => {
 
   return (
     <div className={style.product}>
-      <p>product : {product.title}</p>
+      <p>product : {product.title} ({product.availableSizes.toString()})</p>
       <p>price : {product.price} $</p>
       <span>{product.quantity} </span>
       {/* <input

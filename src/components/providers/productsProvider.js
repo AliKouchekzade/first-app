@@ -51,6 +51,11 @@ const reducer = (state, action) => {
       else return Math.ceil(Math.random() * 6) - 3;
     });
 
+  if (action.type === "search")
+    return state.filter((obj) =>
+      obj.title.toLowerCase().includes(action.value.toLowerCase())
+    );
+
   let index = state.findIndex((obj) => obj.id === action.id);
   const product = { ...state[index] };
   const updateProducts = [...state];
